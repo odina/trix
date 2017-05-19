@@ -65,6 +65,11 @@
       }
     }
 
+    .attachment-inline {
+      display: inline;
+      max-width: none;
+    }
+
     &.attachment-preview {
       width: 100%;
       text-align: center;
