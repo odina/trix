@@ -52,7 +52,7 @@ class Trix.PieceView extends Trix.ObjectView
       nodes
 
   createElement: ->
-    for key of @attributes when config = getTextConfig(key)
+    for key, value of @attributes when config = getTextConfig(key)
       if config.tagName
         pendingElement = makeElement(config.tagName)
 
@@ -67,6 +67,10 @@ class Trix.PieceView extends Trix.ObjectView
           styles[key] = value for key, value of config.style
         else
           styles = config.style
+
+      if config.formatter
+        element ?= makeElement("span")
+        config.formatter(element, value)
 
     if styles
       element ?= makeElement("span")

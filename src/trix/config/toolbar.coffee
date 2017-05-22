@@ -9,6 +9,7 @@ Trix.config.toolbar =
         <button type="button" class="icon italic" data-trix-attribute="italic" data-trix-key="i" title="#{lang.italic}">#{lang.italic}</button>
         <button type="button" class="icon strike" data-trix-attribute="strike" title="#{lang.strike}">#{lang.strike}</button>
         <button type="button" class="icon link" data-trix-attribute="href" data-trix-action="link" data-trix-key="k" title="#{lang.link}">#{lang.link}</button>
+        <button type="button" class="color" data-trix-attribute="color" title="Color">Color</button>
       </span>
 
       <span class="button_group block_tools">
@@ -34,6 +35,23 @@ Trix.config.toolbar =
           <div class="button_group">
             <input type="button" value="#{lang.link}" data-trix-method="setAttribute">
             <input type="button" value="#{lang.unlink}" data-trix-method="removeAttribute">
+          </div>
+        </div>
+      </div>
+
+      <div class="dialog color_dialog" data-trix-attribute="color" data-trix-dialog="color">
+        <div class="color_fields">
+          <input type="color" name="color" list="trix_color_options" value="#3cb371">
+          <datalist id="trix_color_options">
+            <option value="#3cb371">
+            <option value="#e55235">
+            <option value="#ecc542">
+            <option value="#1b6ac9">
+            <option value="#ff2d55">
+          </datalist>
+          <div class="button_group">
+            <input type="button" value="Add" data-trix-method="setAttribute">
+            <input type="button" value="Remove" data-trix-method="removeAttribute">
           </div>
         </div>
       </div>

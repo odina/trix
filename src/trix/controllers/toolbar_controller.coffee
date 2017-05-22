@@ -123,8 +123,9 @@ class Trix.ToolbarController extends Trix.BasicObject
 
     if attributeName = getAttributeName(element)
       if input = getInputForDialog(element, dialogName)
-        input.value = @attributes[attributeName] ? ""
-        input.select()
+        if value = @attributes[attributeName]
+          input.value = value
+        input.select?() or input.focus()
 
     @delegate?.toolbarDidShowDialog(dialogName)
 

@@ -189,6 +189,29 @@ trix-toolbar {
           }
         }
       }
+
+      &.color_dialog {
+        max-width: 260px;
+
+        .color_fields {
+          display: flex;
+
+          input[type=color] {
+            flex: 1;
+            height: 2.4em;
+            margin: 0 10px 0 0;
+            border-radius: 3px;
+            border: 1px solid #bbb;
+            background-color: #fff;
+            outline: none;
+          }
+
+          .button_group {
+            flex: 0 0 content;
+            margin: 0;
+          }
+        }
+      }
     }
   }
 }

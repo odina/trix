@@ -23,3 +23,9 @@ Trix.config.textAttributes =
     inheritable: true
   frozen:
     style: { "backgroundColor": "highlight" }
+  color:
+    inheritable: false
+    parser: (element) ->
+      element.style.color
+    formatter: (element, value) ->
+      element.style.color = value
