@@ -8,6 +8,7 @@ class Trix.ToolbarController extends Trix.BasicObject
   activeDialogSelector = "#{dialogSelector}.active"
   dialogButtonSelector = "#{dialogSelector} input[data-trix-method]"
   dialogInputSelector = "#{dialogSelector} input[type=text], #{dialogSelector} input[type=url]"
+  fileSelector = "input.trix-file-uploader[type=file]"
 
   constructor: (@element) ->
     @attributes = {}
@@ -19,6 +20,7 @@ class Trix.ToolbarController extends Trix.BasicObject
     handleEvent "click", onElement: @element, matchingSelector: toolbarButtonSelector, preventDefault: true
     handleEvent "click", onElement: @element, matchingSelector: dialogButtonSelector, withCallback: @didClickDialogButton
     handleEvent "keydown", onElement: @element, matchingSelector: dialogInputSelector, withCallback: @didKeyDownDialogInput
+    handleEvent "change", onElement: @element, matchingSelector: fileSelector, withCallback: @didFileChanged
 
   # Event handlers
 
@@ -27,7 +29,9 @@ class Trix.ToolbarController extends Trix.BasicObject
     event.preventDefault()
     actionName = getActionName(element)
 
-    if @getDialog(actionName)
+    if actionName is "upload"
+      @element.querySelector(fileSelector).click()
+    else if @getDialog(actionName)
       @toggleDialog(actionName)
     else
       @delegate?.toolbarDidInvokeAction(actionName)
@@ -48,6 +52,11 @@ class Trix.ToolbarController extends Trix.BasicObject
     dialogElement = findClosestElementFromNode(element, matchingSelector: dialogSelector)
     method = element.getAttribute("data-trix-method")
     @[method].call(this, dialogElement)
+
+  didFileChanged: (event, element) =>
+    if element.files[0]?
+      @delegate?.editor.insertFile(element.files[0])
+      element.value = ''
 
   didKeyDownDialogInput: (event, element) =>
     if event.keyCode is 13 # Enter key

@@ -18,6 +18,7 @@ Trix.config.lang =
   strike: "Strikethrough"
   undo: "Undo"
   unlink: "Unlink"
+  upload: "Upload a file"
   urlPlaceholder: "Enter a URL…"
   GB: "GB"
   KB: "KB"

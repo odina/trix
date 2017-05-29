@@ -9,6 +9,8 @@ Trix.config.toolbar =
         <button type="button" class="icon italic" data-trix-attribute="italic" data-trix-key="i" title="#{lang.italic}">#{lang.italic}</button>
         <button type="button" class="icon strike" data-trix-attribute="strike" title="#{lang.strike}">#{lang.strike}</button>
         <button type="button" class="icon link" data-trix-attribute="href" data-trix-action="link" data-trix-key="k" title="#{lang.link}">#{lang.link}</button>
+        <button type="button" class="icon upload" data-trix-action="upload" title="#{lang.upload}">#{lang.upload}</button>
+        <input type="file" class="trix-file-uploader">
       </span>
 
       <span class="button_group block_tools">
